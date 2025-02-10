@@ -1,11 +1,11 @@
 ---
 - name: Add SSH key to known hosts
-  hosts: web
+  hosts: ansible
   tasks:
-    - name: Add 192.168.56.10 to known_hosts
+    - name: Add 192.168.56.11 to known_hosts
       ansible.builtin.known_hosts:
         name: "{{ ansible_env.HOME }}/.ssh/known_hosts"
-        key: "{{ lookup('pipe', 'ssh-keyscan -t rsa 192.168.56.10') }}"
+        key: "{{ lookup('pipe', 'ssh-keyscan -t rsa 192.168.56.11') }}"
         state: present
 - name: Install and configure nginx
   hosts: web
